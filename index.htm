@@ -606,14 +606,56 @@ function voiceV(){
  <div class="row"><button class="btn p" onclick="say('ทดสอบเสียงอ่านข้อสอบกฎหมาย เฉลย ข้อ ข')">🔊 ทดสอบเสียง</button><button class="btn" onclick="stop()">⏹ หยุด</button><button class="btn" onclick="ST.v={n:'',r:.95,p:1,vol:1,auto:false,font:'Sarabun',size:16};save();applyFont();voiceV()">รีเซ็ต</button></div></div>`;
  $('#app').innerHTML=h}
 if('speechSynthesis' in window)speechSynthesis.onvoiceschanged=()=>{if(view==='voice')voiceV()};
+  
 function keyV(){
- let h='<p class="mu">เฉลยทุกข้อ กดเปิดเพื่อดูโจทย์และตัวเลือก (ข้อที่ถูกไฮไลต์สีเขียว)</p>';
- DATA.forEach((s,si)=>{h+=`<h2>${s.title} <span class="mu">${s.sub} · ${s.level}</span></h2>`;
+ let h=`<p class="mu">เฉลยทุกข้อ กดเปิดเพื่อดูโจทย์และตัวเลือก (ข้อที่ถูกไฮไลต์สีเขียว)</p>
+ <div class="card"><label for="keySearch"><b>🔎 ค้นหาในเฉลย</b></label>
+ <input id="keySearch" type="search" placeholder="พิมพ์คำค้น เช่น ลักทรัพย์, มาตรา 420, ศาล..." style="width:100%;font:inherit;padding:10px 12px;margin-top:6px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx)" oninput="filterKey(this.value)">
+ <div class="row"><button class="btn" onclick="document.getElementById('keySearch').value='';filterKey('')">ล้างคำค้น</button><span id="keyCount" class="mu"></span></div></div>`;
+ DATA.forEach((s,si)=>{h+=`<section class="key-section" data-set="${si}"><h2>${s.title} <span class="mu">${s.sub} · ${s.level}</span></h2>`;
   [['m','ข้อสอบหลัก'],['r','ข้อสำรอง']].forEach(([p,nm])=>{const qs=pool(si,p);if(!qs.length)return;
-   h+=`<div class="card"><b>${nm}</b> <span class="mu">ตอบ: ${qs.map(q=>q.n+'='+q.a.map(j=>L[j]).join('/')).join(' · ')}</span>`;
-   qs.forEach(q=>{h+=`<details style="margin-top:8px"><summary>ข้อ ${q.n}. เฉลย ${ansL(q)}</summary><p>${esc(q.q)}</p>${spb(q,true)}${q.o.map((o,j)=>`<div class="opt ${isOk(q,j)?'ok':''}" style="margin:4px 0"><i>${L[j]}.</i><span>${esc(o)}</span></div>`).join('')}</details>`});
-   h+='</div>'})});
- $('#app').innerHTML=h}
+   h+=`<div class="card key-group"><b>${nm}</b> <span class="mu">ตอบ: ${qs.map(q=>q.n+'='+q.a.map(j=>L[j]).join('/')).join(' · ')}</span>`;
+   qs.forEach(q=>{const searchText=[q.q,...q.o,...q.a.map(j=>q.o[j]),s.title,s.sub,nm,ansL(q)].join(' ').toLocaleLowerCase('th');
+    h+=`<details class="key-question" data-search="${esc(searchText)}" style="margin-top:8px"><summary>ข้อ ${q.n}. เฉลย ${ansL(q)}</summary><p>${esc(q.q)}</p>${spb(q,true)}${q.o.map((o,j)=>`<div class="opt ${isOk(q,j)?'ok':''}" style="margin:4px 0"><i>${L[j]}.</i><span>${esc(o)}</span></div>`).join('')}</details>`});
+   h+='</div>'})+'</section>'});
+ $('#app').innerHTML=h;filterKey('');
+}
+function normalizeKeyText(value) {
+  return String(value ?? "")
+    .normalize("NFC")
+    .toLocaleLowerCase("th")
+    .replace(/[\u200B\u200C\u200D\uFEFF]/g, "")
+    .replace(/[\s\u00A0]+/g, " ")
+    .trim();
+}
+
+function filterKey(value) {
+  const term = normalizeKeyText(value);
+  let shown = 0;
+
+  document.querySelectorAll(".key-question").forEach(el => {
+    const text = normalizeKeyText(el.textContent);
+    const match = !term || text.includes(term);
+
+    el.style.display = match ? "" : "none";
+    if (match) shown++;
+  });
+
+  document.querySelectorAll(".key-section").forEach(sec => {
+    const hasMatch = [...sec.querySelectorAll(".key-question")]
+      .some(el => el.style.display !== "none");
+
+    sec.style.display = hasMatch ? "" : "none";
+  });
+
+  const count = document.querySelector("#keyCount");
+  if (count) {
+    count.textContent = term
+      ? `พบ ${shown} ข้อ`
+      : `ทั้งหมด ${shown} ข้อ`;
+  }
+}
+  
 function statsV(){
  const[t,c]=totals(),all=allQ();
  const dist=[0,0,0,0,0];all.forEach(q=>q.a.forEach(j=>dist[j]++));const dn=dist.reduce((a,b)=>a+b,0);
