@@ -1,0 +1,236 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.exp{margin:16px 0 0;padding:12px 14px;border-radius:8px;background:var(--accent-soft);border-left:4px solid var(--accent);font-size:16px}
+.exp b{display:block;margin-bottom:2px}
+</style></head><body>
+<title>ตอบปัญหากฎหมาย 2569</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: a single reading column, exam-paper feel. Sticky tab bar, one question at a time for MCQ, accordion-style cards for essays. */
+:root{
+  --bg:#ffffff;
+  --surface:#ffffff;
+  --ink:#141414;
+  --muted:#757575;
+  --line:#e6e6e6;
+  --accent:#141414;
+  --accent-ink:#ffffff;
+  --accent-soft:#f3f3f3;
+  --good:#2e6b4c;
+  --good-bg:#eff6f1;
+  --bad:#9e3a33;
+  --bad-bg:#f8efee;
+  --font-display:"Noto Serif Thai","Sarabun",Georgia,serif;
+  --font-body:"Sarabun","Noto Sans Thai",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f0f0f;--surface:#171717;--ink:#ececec;--muted:#8e8e8e;--line:#2b2b2b;
+    --accent:#ececec;--accent-ink:#0f0f0f;--accent-soft:#222222;
+    --good:#7cc29b;--good-bg:#14201a;--bad:#e08a82;--bad-bg:#241615;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f0f0f;--surface:#171717;--ink:#ececec;--muted:#8e8e8e;--line:#2b2b2b;
+  --accent:#ececec;--accent-ink:#0f0f0f;--accent-soft:#222222;
+  --good:#7cc29b;--good-bg:#14201a;--bad:#e08a82;--bad-bg:#241615;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.75;
+  padding-block:0 48px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.wrap{max-width:760px;margin:0 auto}
+header{padding:28px 0 8px}
+.eyebrow{font-size:13px;letter-spacing:.08em;color:var(--accent);font-weight:600}
+h1{font-family:var(--font-display);font-size:clamp(26px,5.5vw,36px);line-height:1.3;margin:4px 0 6px;text-wrap:balance}
+.sub{color:var(--muted);font-size:15px;margin:0}
+.navlink{display:inline-block;margin-top:12px;font:inherit;font-weight:600;font-size:15px;text-decoration:none;color:var(--accent);border:1.5px solid var(--accent);border-radius:8px;padding:8px 16px}
+.navlink:hover{background:var(--accent);color:var(--accent-ink)}
+.navlink:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+nav.tabs{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);
+  display:flex;gap:4px;border-bottom:1px solid var(--line);margin-top:16px;
+}
+nav.tabs button{
+  flex:1;font:inherit;font-weight:600;font-size:16px;background:none;border:0;color:var(--muted);
+  padding:12px 8px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;
+}
+nav.tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+button:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+main{padding-top:20px}
+
+/* progress + navigator */
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+.meta{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted);margin:8px 0 12px;flex-wrap:wrap}
+.dots{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.dots button{
+  width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);
+  font:inherit;font-weight:600;font-variant-numeric:tabular-nums;cursor:pointer;
+}
+.dots button.cur{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.dots button.ok{background:var(--good-bg);border-color:var(--good);color:var(--good)}
+.dots button.no{background:var(--bad-bg);border-color:var(--bad);color:var(--bad)}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px clamp(16px,4vw,28px)}
+.qno{font-family:var(--font-display);font-size:20px;margin:0 0 10px}
+.stem p{margin:0 0 10px}
+.ask{font-weight:600;margin:14px 0 4px}
+.choices{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.choice{
+  display:flex;gap:12px;text-align:left;font:inherit;line-height:1.65;color:var(--ink);
+  background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;cursor:pointer;
+  width:100%;
+}
+.choice:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.choice .k{
+  flex:none;width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
+  display:grid;place-items:center;font-weight:700;font-size:15px;margin-top:1px;
+}
+.choice .t{min-width:0;overflow-wrap:anywhere}
+.choice:disabled{cursor:default}
+.choice.right{border-color:var(--good);background:var(--good-bg)}
+.choice.right .k{background:var(--good);color:var(--surface)}
+.choice.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.choice.wrong .k{background:var(--bad);color:var(--surface)}
+.verdict{margin:16px 0 0;padding:12px 14px;border-radius:8px;font-weight:600}
+.verdict.ok{background:var(--good-bg);color:var(--good)}
+.verdict.no{background:var(--bad-bg);color:var(--bad)}
+.row{display:flex;justify-content:space-between;gap:12px;margin-top:18px;flex-wrap:wrap}
+.btn{
+  font:inherit;font-weight:600;border-radius:8px;padding:10px 20px;cursor:pointer;
+  border:1.5px solid var(--accent);background:var(--accent);color:var(--accent-ink);
+}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:disabled{opacity:.4;cursor:default}
+
+.result h2{font-family:var(--font-display);font-size:24px;margin:0 0 6px}
+.score{font-family:var(--font-display);font-size:56px;line-height:1.1;color:var(--accent);font-variant-numeric:tabular-nums}
+.score small{font-size:22px;color:var(--muted)}
+.review{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:15.5px}
+.review li{display:flex;gap:10px;align-items:baseline}
+.review b{font-variant-numeric:tabular-nums;min-width:3.4em}
+.tag{font-size:13px;font-weight:700;border-radius:4px;padding:0 8px}
+.tag.ok{background:var(--good-bg);color:var(--good)}
+.tag.no{background:var(--bad-bg);color:var(--bad)}
+.tag.skip{background:var(--line);color:var(--muted)}
+
+/* essay */
+.essay{margin-bottom:18px}
+.essay textarea{
+  width:100%;min-height:130px;margin-top:14px;font:inherit;font-size:16px;line-height:1.7;color:var(--ink);
+  background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;resize:vertical;
+}
+.badge{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.04em;color:var(--accent);background:var(--accent-soft);border-radius:4px;padding:0 8px;margin-left:8px;vertical-align:middle}
+.model{margin-top:16px;border-top:1px dashed var(--line);padding-top:14px}
+.model h4{font-family:var(--font-display);font-size:16px;margin:16px 0 4px;color:var(--accent)}
+.model p{margin:0 0 10px}
+.model ul{margin:0 0 10px;padding-left:1.3em}
+.model li{margin-bottom:6px}
+.model .sum{background:var(--accent-soft);border-radius:8px;padding:12px 16px;margin-top:14px}
+.note{background:var(--bad-bg);color:var(--bad);border-radius:8px;padding:12px 14px;font-weight:600}
+footer{margin-top:32px;color:var(--muted);font-size:14px}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.exp{margin:16px 0 0;padding:12px 14px;border-radius:8px;background:var(--accent-soft);border-left:4px solid var(--accent);font-size:16px}
+.exp b{display:block;margin-bottom:2px}
+</style>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">ข้อสอบรอบคัดเลือก 2569 · ปรนัย 25 ข้อ พร้อมเฉลย</div>
+    <h1>ตอบปัญหากฎหมาย 2569</h1>
+    <p class="sub">ทำทีละข้อ ตอบแล้วดูเฉลยและคำอธิบายทันที</p>
+    <a class="navlink" href="index.htm">← ไปหน้าคลังข้อสอบรวมทุกชุด</a>
+    <a class="navlink" href="ตอบปัญหาข้อสอบ%20จุฬาฯ%2069.html">ไปหน้าข้อสอบ จุฬาฯ 69 →</a>
+  </header>
+  <main id="app"></main>
+  <footer>เฉลยและคำอธิบายอ้างอิงตามไฟล์ข้อสอบที่แนบมา</footer>
+</div>
+<script>
+const Q=[
+["ข้อใดเป็นสัญญาซื้อขายที่ไม่สามารถฟ้องร้องให้บังคับคดีได้ตามประมวลกฎหมายแพ่งและพาณิชย์",["ซื้อแหวนเพชร 100,000 บาทด้วยวาจา ชำระราคาบางส่วนและส่งมอบแหวนทันที","ซื้อแหวนทอง 50,000 บาทด้วยวาจา ไม่ชำระราคา ไม่ส่งมอบ","ซื้อแหวนเงิน 15,000 บาทด้วยวาจา ไม่ชำระราคา ไม่ส่งมอบ","ซื้อบ้าน 1 ล้านบาท ทำเป็นหนังสือและจดทะเบียนแล้ว แต่ไม่ชำระราคา"],1,"สังหาริมทรัพย์ราคาตั้งแต่ 20,000 บาทขึ้นไป ต้องมีหลักฐานเป็นหนังสือ มัดจำ หรือชำระหนี้บางส่วน (ม.456 ว.2-3) ข้อ ข ไม่มีหลักฐานใดเลย จึงฟ้องไม่ได้ ข้อ ก มีการชำระบางส่วน ข้อ ค ราคาต่ำกว่า 20,000 บาท ข้อ ง ทำถูกแบบตาม ม.456 ว.1"],
+["ตามอนุสัญญาสหประชาชาติว่าด้วยกฎหมายทะเล ค.ศ. 1982 รัฐชายฝั่งกำหนดความกว้างของเขตเศรษฐกิจจำเพาะได้ไม่เกินกี่ไมล์ทะเล",["ไม่เกิน 200 ไมล์ทะเล","ไม่เกิน 12 ไมล์ทะเล","ไม่เกิน 24 ไมล์ทะเล","ไม่เกิน 320 ไมล์ทะเล"],0,"เขตเศรษฐกิจจำเพาะกว้างได้ไม่เกิน 200 ไมล์ทะเล นับจากเส้นฐาน"],
+["ภาษีเงินได้บุคคลธรรมดาของไทยโดยทั่วไปใช้อัตราภาษีประเภทใด",["อัตราก้าวหน้า","อัตราผสม","อัตราถอยหลัง","อัตราคงที่"],0,"ใช้อัตราก้าวหน้า เงินได้สุทธิส่วนที่อยู่ในขั้นสูงขึ้นเสียภาษีในอัตราที่สูงขึ้น"],
+["ก จ้าง ข เป็นลูกจ้างดูแลสวนและฟาร์มเป็ด ข ไม่ดูแลเป็ดให้ดี เป็ดตัวหนึ่งกัดกินพืชผักในที่ดินของ ค เสียหาย อีกตัวหลุดไปบนถนนถูกรถชนตาย ข้อใดถูกต้องที่สุด",["ก และ ข ร่วมรับผิดต่อ ค เพราะ ก เป็นเจ้าของสัตว์ ส่วน ข เป็นผู้รับดูแลสัตว์","ก และ ข ร่วมรับผิดต่อ ค เพราะ ก เป็นนายจ้าง และ ข เป็นลูกจ้าง","ไม่มีสิทธิเรียกค่าเสียหายจาก ข เพราะเป็ดถูกรถชนตาย","ค เรียกให้ ข รับผิดได้แต่ผู้เดียว เพราะเป็นผู้ทำละเมิด เรียก ก ไม่ได้"],1,"ข เป็นผู้รับดูแลสัตว์แทนเจ้าของ ต้องรับผิดตาม ม.433 ก เป็นนายจ้างต้องร่วมรับผิดเพราะ ข ทำละเมิดในทางการที่จ้าง (ม.425) ส่วนเป็ดที่ถูกรถชน ก เรียกให้ ข รับผิดฐานละเมิดได้ตาม ม.420"],
+["ก จ้าง ข ติดตั้งประตูอัตโนมัติ ภายใน 30 วัน หากไม่เสร็จปรับวันละ 100 บาท ค่าจ้าง 20,000 บาท ก ชำระแล้วครึ่งหนึ่งตั้งแต่วันทำสัญญา ที่เหลือชำระเมื่อติดตั้งเสร็จ ข้อใดไม่ถูกต้อง",["สัญญาจ้างดังกล่าวเป็นสัญญาต่างตอบแทน","เงิน 10,000 บาทแรกที่ชำระไว้ ตามกฎหมายเรียกว่ามัดจำ","ก มีสิทธิปฏิเสธไม่ชำระเงิน 10,000 บาทที่เหลือจนกว่า ข จะทำเสร็จ","เงินค่าปรับวันละ 100 บาท ตามกฎหมายเรียกว่าเบี้ยปรับ"],1,"การเป็นมัดจำต้องปรากฏเจตนาให้เป็นหลักฐานการทำสัญญาและประกันการชำระหนี้ (ม.377) กรณีนี้เป็นเพียงการชำระหนี้บางส่วน"],
+["ก เสนอขายสินค้าแก่ ข ข ตอบตกลงทางไปรษณีย์ ส่งจดหมาย 1 ก.พ. 2569 จดหมายถึงตู้จดหมายบ้าน ก วันที่ 3 ก.พ. คนงานนำเข้าบ้านวันที่ 5 ก.พ. ก เปิดอ่านวันที่ 7 ก.พ. สัญญาเกิดขึ้นวันใด",["1 กุมภาพันธ์ 2569","3 กุมภาพันธ์ 2569","5 กุมภาพันธ์ 2569","7 กุมภาพันธ์ 2569"],1,"การแสดงเจตนาตอบรับมีผลเมื่อไปถึง (ม.361 ว.1) สัญญาจึงเกิดวันที่ 3 ก.พ. 2569 ที่จดหมายถึงตู้จดหมายบ้าน ก"],
+["ข้อใดไม่ใช่กรณีที่คนเสมือนไร้ความสามารถต้องได้รับความยินยอมจากผู้พิทักษ์ก่อน",["ให้เช่าบ้าน 1 ปี","กู้ยืมเงิน","ทำสัญญาประนีประนอมยอมความ","ทุกข้อต้องขอความยินยอมจากผู้พิทักษ์ทั้งสิ้น"],0,"กู้ยืมเงินและประนีประนอมยอมความต้องได้รับความยินยอม (ม.34(3), (11)) ส่วนการให้เช่าอสังหาริมทรัพย์ตาม ม.34(5) ต้องเกิน 3 ปี การเช่าเพียง 1 ปีจึงไม่ต้องขอ"],
+["“ทรัพย์สินที่จัดสรรไว้โดยเฉพาะสำหรับวัตถุประสงค์เพื่อการกุศล สาธารณะ การศาสนา ศิลปะ วิทยาศาสตร์ วรรณคดี การศึกษา ฯลฯ โดยมิได้มุ่งหาผลประโยชน์มาแบ่งปันกัน และได้จดทะเบียนตามประมวลกฎหมายนี้” หมายถึงนิติบุคคลประเภทใด",["มูลนิธิ","สมาคม","สหกรณ์","กองทุนรวม"],0,"เป็นนิยามของมูลนิธิ ตาม ป.พ.พ. ม.110"],
+["นายเก่งใช้ปืนยิงนายกล้าซึ่งนั่งชมการแสดงช้าง กระสุนพลาดไปถูกนายแก้วที่นั่งติดกัน ได้รับบาดเจ็บสาหัส นายเก่งรับผิดอย่างไร",["พยายามฆ่านายกล้า และทำร้ายร่างกายนายแก้วจนบาดเจ็บสาหัส","ไม่ต้องรับผิดฐานฆ่านายกล้า แต่ทำร้ายร่างกายนายแก้วจนบาดเจ็บสาหัส","พยายามฆ่านายกล้า และพยายามฆ่านายแก้ว","ไม่ต้องรับผิดฐานฆ่านายกล้า และไม่ต้องรับผิดฐานฆ่านายแก้ว"],2,"การยิงปืนเป็นเจตนาฆ่า ต่อนายกล้าเป็นเจตนาประสงค์ต่อผล ยิงไม่ถูกจึงเป็นพยายามฆ่า ส่วนนายแก้วนั่งติดกัน เป็นเจตนาเล็งเห็นผล เมื่อไม่ถึงแก่ความตายจึงเป็นพยายามฆ่า ไม่ใช่เพียงทำร้ายร่างกาย"],
+["ข้อใดไม่ถือเป็น “คำฟ้อง” ตาม ป.วิ.แพ่ง มาตรา 1 (3)",["คำอุทธรณ์","คำร้องขอให้ศาลวินิจฉัยชี้ขาดเบื้องต้นในปัญหาข้อกฎหมาย","คำร้องขอแก้ไขคำฟ้อง","คำร้องสอด"],1,"คำฟ้องคือกระบวนพิจารณาที่โจทก์เสนอข้อหาต่อศาล ไม่ว่าชั้นใด ไม่ว่าเสนอเมื่อเริ่มคดี ภายหลังโดยแก้ไขเพิ่มเติม ฟ้องแย้ง หรือสอดเข้ามาในคดี คำร้องขอให้ชี้ขาดเบื้องต้นในปัญหาข้อกฎหมายไม่ใช่การเสนอข้อหา"],
+["ข้อใดไม่ถือเป็นคดีมโนสาเร่",["กู้ยืมเงิน 300,000 บาท พร้อมดอกเบี้ยนับแต่วันผิดนัดจนถึงวันฟ้อง ร้อยละ 3 ต่อปี","กู้ยืมเงิน 300,000 บาท พร้อมดอกเบี้ยร้อยละ 15 ต่อปีนับถัดจากวันฟ้องจนชำระเสร็จ","ฟ้องขับไล่ออกจากบ้านที่ให้เช่าได้เดือนละ 30,000 บาท","ฟ้องขับไล่ออกจากบ้านที่ให้เช่าได้เดือนละ 4,000 บาท"],0,"ตาม พ.ร.ฎ.กำหนดจำนวนเงินในคดีมโนสาเร่ พ.ศ. 2546 คดีทุนทรัพย์ไม่เกิน 300,000 บาท และขับไล่ที่มีค่าเช่าไม่เกินเดือนละ 30,000 บาท เป็นคดีมโนสาเร่ ข้อ ก มีดอกเบี้ยก่อนฟ้องรวมแล้วทุนทรัพย์เกิน 300,000 บาท จึงไม่ใช่คดีมโนสาเร่ (ดอกเบี้ยหลังฟ้องไม่นับรวมทุนทรัพย์)"],
+["ในคดีแบบกลุ่ม ศาลส่งคำบอกกล่าวคำสั่งอนุญาตให้ดำเนินคดีแบบกลุ่มให้สมาชิกกลุ่มเท่าที่ทราบ และประกาศทางหนังสือพิมพ์รายวันที่แพร่หลายเป็นเวลา",["3 วันติดต่อกัน","7 วันติดต่อกัน","14 วันติดต่อกัน","21 วันติดต่อกัน"],0,"ตามมาตรา 222/15"],
+["ในการร่างรัฐธรรมนูญภายหลังเหตุการณ์ 14 ตุลาคม 2516 พระบาทสมเด็จพระเจ้าอยู่หัวทรงมีพระราชกระแสแสดงความไม่เห็นด้วยอย่างยิ่งกับบทบัญญัติเรื่องใด จนนำไปสู่การแก้ไขรัฐธรรมนูญ",["ที่มาของวุฒิสภา","ที่มาขององคมนตรี","การสืบราชสันตติวงศ์","การแก้ไขเพิ่มเติมรัฐธรรมนูญ"],0,"บทบัญญัติเรื่องที่มาของวุฒิสภา"],
+["ข้อใดคือบ่อเกิดของกฎหมายระหว่างประเทศ",["คำพิพากษาของศาลยุติธรรมระหว่างประเทศ","จารีตประเพณีระหว่างประเทศ","คำสอนของนักกฎหมายระหว่างประเทศ","แถลงการณ์ฝ่ายเดียวของรัฐ"],1,"จารีตประเพณีระหว่างประเทศเป็นบ่อเกิดของกฎหมายระหว่างประเทศ ส่วนคำพิพากษาและคำสอนของนักกฎหมายเป็นเพียงแหล่งช่วยในการวินิจฉัย"],
+["ข้อใดคือองค์ประกอบของรัฐตาม Montevideo Convention on the Rights and Duties of States",["ดินแดน","อาณานิคม","กฎหมายภายใน","ทรัพยากรธรรมชาติ"],0,"องค์ประกอบของรัฐคือ ประชากร ดินแดน รัฐบาล และความสามารถในการเข้าสัมพันธ์กับรัฐอื่น ในตัวเลือกนี้มีเพียง “ดินแดน”"],
+["ข้อใดมีสถานะเป็น “องค์การระหว่างประเทศ” (international organizations)",["ที่ประชุมรัฐภาคีอนุสัญญา (COPs)","คณะมนตรีความมั่นคงแห่งสหประชาชาติ","กรีนพีซ","ทบวงการปรมาณูระหว่างประเทศ"],3,"ทบวงการปรมาณูระหว่างประเทศ (IAEA) เป็นองค์การระหว่างประเทศ ส่วนที่เหลือเป็นการประชุม องค์กรย่อย หรือองค์กรเอกชน"],
+["วิธีระงับข้อพิพาทใดเป็นแบบมีฝ่ายที่สามเข้ามาเกี่ยวข้อง",["การหารือของผู้นำสองประเทศ","การเจรจา (negotiation)","การจัดเจรจา (good offices)","การหารือแบบทวิภาคี"],2,"good offices มีบุคคลที่สามช่วยจัดให้คู่พิพาทมาเจรจากัน ส่วนตัวเลือกอื่นเป็นการพูดคุยระหว่างคู่พิพาทเอง"],
+["ข้อใดกล่าวถึงลักษณะของภาษีอากรได้ถูกต้องที่สุด",["เป็นเงินที่ประชาชนจ่ายให้รัฐโดยสมัครใจ","ผู้เสียภาษีมีสิทธิได้รับบริการจากรัฐตอบแทนโดยตรงตามจำนวนภาษีที่จ่าย","เป็นเงินที่รัฐจัดเก็บตามกฎหมาย โดยไม่จำเป็นต้องมีสิ่งตอบแทนโดยตรงแก่ผู้เสียภาษีแต่ละราย","รัฐจัดเก็บเฉพาะจากผู้มีรายได้จากการประกอบธุรกิจเท่านั้น"],2,"ภาษีอากรเป็นเงินที่รัฐใช้อำนาจตามกฎหมายจัดเก็บ เพื่อใช้ในกิจการของรัฐและบริการสาธารณะ ผู้เสียภาษีไม่จำเป็นต้องได้สิ่งตอบแทนเฉพาะรายโดยตรง"],
+["ข้อใดไม่ใช่ภาษีที่จัดเก็บโดยองค์กรปกครองส่วนท้องถิ่น",["ภาษีป้าย","ภาษีการรับมรดก","ภาษีที่ดินและสิ่งปลูกสร้าง","ไม่มีข้อใดถูก"],1,"ภาษีการรับมรดกจัดเก็บโดยกรมสรรพากร ส่วนภาษีป้ายและภาษีที่ดินและสิ่งปลูกสร้างจัดเก็บโดยท้องถิ่น"],
+["ข้อใดจับคู่ประเภทภาษีกับหน่วยงานหลักที่จัดเก็บได้ถูกต้องทั้งสองคู่",["ภาษีสรรพสามิต – กรมศุลกากร / อากรขาเข้า – กรมสรรพสามิต","ภาษีสรรพสามิต – กรมสรรพสามิต / ภาษีเงินได้บุคคลธรรมดา – กรมศุลกากร","ภาษีสรรพสามิต – กรมสรรพสามิต / อากรขาเข้า – กรมศุลกากร","อากรขาเข้า – กรมสรรพากร / ภาษีเงินได้บุคคลธรรมดา – กรมสรรพสามิต"],2,"กรมสรรพสามิตจัดเก็บภาษีสรรพสามิต กรมศุลกากรจัดเก็บอากรขาเข้า ตัวเลือกอื่นผิดอย่างน้อยหนึ่งคู่"],
+["ผู้ประกอบการที่ไม่ได้รับยกเว้น VAT มีหน้าที่จดทะเบียนภาษีมูลค่าเพิ่มเมื่อมีรายรับเกินเท่าใดต่อปี",["600,000 บาท","1,200,000 บาท","1,500,000 บาท","1,800,000 บาท"],3,"เมื่อรายรับเกิน 1.8 ล้านบาทต่อปี ต้องยื่นขอจดทะเบียนภายใน 30 วันนับแต่วันที่รายรับเกินเกณฑ์"],
+["เด็กชายหนึ่ง อายุ 13 ปี ใช้ก้อนหินปาใส่นายสอง (19 ปี) แต่นายสองหลบทัน ก้อนหินไปถูกนายสาม (21 ปี) บาดเจ็บ เด็กชายหนึ่งต้องรับผิดและรับโทษหรือไม่",["รับผิดต่อนายสอง แต่ไม่ต้องรับผิดต่อนายสาม และต้องรับโทษกรณีนายสอง","ไม่รับผิดต่อนายสอง แต่รับผิดต่อนายสามและต้องรับโทษกรณีนายสาม","รับผิดต่อนายสอง (พยายาม) และนายสาม (เจตนาพลาด) โดยกรณีนายสามได้รับยกเว้นโทษเท่านั้น","รับผิดต่อนายสอง (พยายามทำร้าย) และนายสาม (ทำร้ายโดยพลาด) แต่ได้รับการยกเว้นโทษทั้งสองกรณี"],3,"เด็กอายุไม่เกิน 15 ปี ได้รับการยกเว้นโทษ แม้การกระทำจะเป็นความผิด (พยายามทำร้ายนายสอง และทำร้ายนายสามโดยพลาด)"],
+["อนุสัญญาระหว่างประเทศฉบับใดมุ่งควบคุมการเคลื่อนย้ายข้ามแดนและการกำจัดของเสียอันตราย",["อนุสัญญาไซเตส","อนุสัญญาแรมซาร์","อนุสัญญาบาเซล","อนุสัญญามินามาตะ"],2,"อนุสัญญาบาเซลว่าด้วยการควบคุมการเคลื่อนย้ายข้ามแดนและการกำจัดของเสียอันตราย"],
+["ความตกลงปารีส (Paris Agreement) มีเป้าหมายควบคุมอุณหภูมิเฉลี่ยของโลกไม่ให้เพิ่มสูงเกินเท่าใดเมื่อเทียบกับยุคก่อนปฏิวัติอุตสาหกรรม",["ต่ำกว่า 0.5 องศาเซลเซียส","ต่ำกว่า 1 องศาเซลเซียสอย่างเด็ดขาด","ต่ำกว่า 2 องศาเซลเซียส และพยายามจำกัดไม่เกิน 1.5 องศาเซลเซียส","ไม่จำกัดตัวเลข แต่เน้นซื้อขายคาร์บอนเครดิตเท่านั้น"],2,"เป็นไปตามความตกลงปารีส ข้อ 2"],
+["พิธีสารมอนทรีออล (Montreal Protocol) มุ่งควบคุมและยกเลิกการใช้สารกลุ่มใดมากที่สุด",["ก๊าซ CO2 และ CH4","สารหนูและโลหะหนักในอุตสาหกรรมเหมืองแร่","ฝุ่น PM 2.5 จากการเผาทางการเกษตร","สาร CFCs และสารฮาลอน (Halons)"],3,"พิธีสารมอนทรีออลว่าด้วยสารที่ทำลายชั้นโอโซน มุ่งเน้น CFCs และฮาลอน"]
+];
+const LETTERS=["ก","ข","ค","ง"];
+const MCQ=Q.map(([stem,choices,ans,exp])=>({stem,choices,ans,exp}));
+const KEY="law2569-quiz-v1";
+let st={cur:0,ans:Array(MCQ.length).fill(null),show:false};
+try{const s=JSON.parse(localStorage.getItem(KEY)||"null");if(s&&Array.isArray(s.ans)&&s.ans.length===MCQ.length){st=Object.assign(st,s);st.show=false}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+const app=document.getElementById("app");
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+function render(){
+  const answered=st.ans.filter(a=>a!==null).length;
+  const correct=st.ans.filter((a,i)=>a===MCQ[i].ans).length;
+  let h=`<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="${MCQ.length}" aria-valuenow="${answered}"><i style="width:${answered/MCQ.length*100}%"></i></div>
+  <div class="meta"><span>ตอบแล้ว ${answered} / ${MCQ.length} ข้อ</span><span>ถูก ${correct} ข้อ</span></div><div class="dots">`;
+  MCQ.forEach((q,i)=>{const a=st.ans[i];
+    const cls=(!st.show&&i===st.cur?"cur ":"")+(a===null?"":(a===q.ans?"ok":"no"));
+    h+=`<button class="${cls}" data-go="${i}" aria-label="ข้อ ${i+1}">${i+1}</button>`});
+  h+=`</div>`+(st.show?resultHtml(correct):questionHtml(st.cur));
+  app.innerHTML=h;
+  app.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{st.cur=+b.dataset.go;st.show=false;save();render()});
+  app.querySelectorAll("[data-pick]").forEach(b=>b.onclick=()=>{if(st.ans[st.cur]!==null)return;st.ans[st.cur]=+b.dataset.pick;save();render()});
+  const $=id=>document.getElementById(id);
+  if($("prev"))$("prev").onclick=()=>{st.cur--;save();render()};
+  if($("next"))$("next").onclick=()=>{st.cur++;save();render()};
+  if($("fin"))$("fin").onclick=()=>{st.show=true;render();window.scrollTo(0,0)};
+  if($("again"))$("again").onclick=()=>{st.ans=Array(MCQ.length).fill(null);st.cur=0;st.show=false;save();render();window.scrollTo(0,0)};
+  if($("back"))$("back").onclick=()=>{st.show=false;render()};
+}
+function questionHtml(i){
+  const q=MCQ[i],a=st.ans[i],done=a!==null;
+  let h=`<div class="card"><h2 class="qno">ข้อที่ ${i+1}</h2><div class="stem"><p>${esc(q.stem)}</p></div><div class="choices">`;
+  q.choices.forEach((c,k)=>{let cls="choice";
+    if(done){if(k===q.ans)cls+=" right";else if(k===a)cls+=" wrong"}
+    h+=`<button class="${cls}" data-pick="${k}" ${done?"disabled":""}><span class="k">${LETTERS[k]}</span><span class="t">${esc(c)}</span></button>`});
+  h+=`</div>`;
+  if(done){
+    h+=a===q.ans?`<div class="verdict ok">ถูกต้อง ข้อนี้ตอบ ${LETTERS[q.ans]}</div>`:`<div class="verdict no">ยังไม่ถูก เฉลยคือข้อ ${LETTERS[q.ans]} (คุณตอบข้อ ${LETTERS[a]})</div>`;
+    h+=`<div class="exp"><b>คำอธิบาย</b>${esc(q.exp)}</div>`;
+  }
+  const last=i===MCQ.length-1;
+  h+=`<div class="row"><button class="btn ghost" id="prev" ${i===0?"disabled":""}>ข้อก่อนหน้า</button>`;
+  h+=last?`<button class="btn" id="fin">ดูผลคะแนน</button>`:`<button class="btn" id="next">ข้อถัดไป</button>`;
+  return h+`</div></div>`;
+}
+function resultHtml(correct){
+  let h=`<div class="card result"><h2>ผลคะแนน</h2><div class="score">${correct}<small> / ${MCQ.length}</small></div><ul class="review">`;
+  MCQ.forEach((q,i)=>{const a=st.ans[i];
+    const t=a===null?`<span class="tag skip">ยังไม่ตอบ</span>`:a===q.ans?`<span class="tag ok">ถูก</span>`:`<span class="tag no">ผิด</span>`;
+    const d=a===null?`เฉลย ${LETTERS[q.ans]}`:a===q.ans?`ตอบ ${LETTERS[a]}`:`ตอบ ${LETTERS[a]} · เฉลย ${LETTERS[q.ans]}`;
+    h+=`<li><b>ข้อ ${i+1}</b>${t}<span>${d}</span></li>`});
+  return h+`</ul><div class="row"><button class="btn ghost" id="back">กลับไปดูข้อสอบ</button><button class="btn" id="again">ทำใหม่ทั้งหมด</button></div></div>`;
+}
+render();
+</script>
+</body></html>
